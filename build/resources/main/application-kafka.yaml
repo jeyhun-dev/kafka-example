@@ -1,0 +1,5 @@
+spring:
+  kafka:
+    brokers:
+      bootstrap-servers: localhost:9092
+      group-id: superhero
