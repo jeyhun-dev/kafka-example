@@ -33,7 +33,7 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, String> containerFactory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         containerFactory.setConsumerFactory(stringConsumerFactory());
-        containerFactory.setRecordMessageConverter(new StringJsonMessageConverter());
+//        containerFactory.setRecordMessageConverter(new StringJsonMessageConverter());
         containerFactory.setBatchListener(true);
         return containerFactory;
     }
@@ -44,7 +44,8 @@ public class KafkaConsumerConfig {
         configMaps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configMaps.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         configMaps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        configMaps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, StringSerializer.class);
+        configMaps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
+        configMaps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         configMaps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(
                 configMaps,

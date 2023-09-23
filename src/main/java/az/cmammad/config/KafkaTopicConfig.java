@@ -1,5 +1,6 @@
 package az.cmammad.config;
 
+import az.cmammad.enumeration.KafkaConst;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,7 +11,7 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topicMessage() {
-        return TopicBuilder.name("TOPIC-STRING")
+        return TopicBuilder.name(KafkaConst.TOPIC_SUPERHERO.name())
                 .partitions(4)
                 .replicas(1)
                 .build();
