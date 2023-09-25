@@ -12,7 +12,7 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic topicMessage() {
         return TopicBuilder.name(KafkaConst.TOPIC_SUPERHERO.name())
-                .partitions(4)
+                .partitions(3)
                 .replicas(1)
                 .build();
     }
